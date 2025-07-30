@@ -35,23 +35,6 @@
             },
             "isBackground": true,
             "problemMatcher": []
-        },
-        {
-            "label": "Deploy",
-            "type": "shell",
-            "command": "npm",
-            "args": [
-                "run",
-                "deploy"
-            ],
-            "group": "build",
-            "presentation": {
-                "echo": true,
-                "reveal": "always",
-                "focus": false,
-                "panel": "shared"
-            },
-            "problemMatcher": []
         }
     ]
 }
