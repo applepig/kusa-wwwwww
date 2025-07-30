@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "npm run build && python3 -m http.server 8000 -d dist",
-    "build": "node src/converter.js && cp src/index.html dist/"
+    "build": "node build.js"
   },
   "keywords": [
     "grass",
@@ -14,10 +14,10 @@
     "unicode"
   ],
   "author": "Dominic Wu",
-  "license": "MIT",
+  "license": "AS IS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/applpeig/kusa-wwwwww.git"
+    "url": "https://github.com/applepig/kusa-wwwwww.git"
   },
   "homepage": "https://applepig.idv.tw/kusa"
 }

@@ -14,11 +14,7 @@ const pattern = /^⿱艹(.)(?:\[[A-Z]+\])?$/;
 
 console.log(`正在讀取檔案: ${inputFilePath}`);
 
-try {
-    const fileContent = fs.readFileSync(inputFilePath, 'utf-8');
-    const lines = fileContent.split('\n');
-
-    const original_chars = [];
+try {    const fileContent = fs.readFileSync(inputFilePath, 'utf-8');    const lines = fileContent.split(/\r?\n/);    const original_chars = [];
     const grass_chars = [];
     const seen_keys = new Set();
 
