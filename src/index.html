@@ -138,11 +138,13 @@
         .action-button:active {
             transform: translateY(0);
         }
+
         .action-button.outline {
             background-color: transparent;
             border: 1px solid var(--grass-green-main);
             color: var(--grass-green-main);
         }
+
         .action-button.outline:hover {
             background-color: var(--grass-green-main);
             color: white;
@@ -235,15 +237,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- 動態建立對照表 ---
-            const GRASS_MAP = {};
-            const REVERSE_GRASS_MAP = {};
+            const TO_GRASSED_MAP = {};
+            const TO_TRIMMED_MAP = {};
 
             if (typeof TRIMMED_CHARS !== 'undefined' && typeof GRASSED_CHARS !== 'undefined') {
-                for (let i = 0; i < TRIMMED_CHARS.length; i++) {
-                    const originalChar = TRIMMED_CHARS[i];
-                    const grassChar = GRASSED_CHARS[i];
-                    GRASS_MAP[originalChar] = grassChar;
-                    REVERSE_GRASS_MAP[grassChar] = originalChar;
+                // 使用 Array.from 或 [...string] 來正確處理 UTF-16 surrogate pairs
+                const originalChars = [...TRIMMED_CHARS];
+                const grassChars = [...GRASSED_CHARS];
+
+                for (let i = 0; i < originalChars.length; i++) {
+                    const originalChar = originalChars[i];
+                    const grassChar = grassChars[i];
+
+                    // 只有當該字符還沒有對照關係時才建立，避免重複覆蓋
+                    if (!TO_GRASSED_MAP[originalChar]) {
+                        TO_GRASSED_MAP[originalChar] = grassChar;
+                    }
+                    if (!TO_TRIMMED_MAP[grassChar]) {
+                        TO_TRIMMED_MAP[grassChar] = originalChar;
+                    }
                 }
             } else {
                 console.error('grass.js 載入失敗或資料不正確。');
@@ -258,18 +270,18 @@
             const copyFeedback = document.getElementById('copy-feedback');
 
             // --- 核心轉換功能 ---
-            function convertToGrass(text) {
+            function toGrassed(text) {
                 let result = '';
                 for (const char of text) {
-                    result += GRASS_MAP[char] || char;
+                    result += TO_GRASSED_MAP[char] || char;
                 }
                 return result;
             }
 
-            function convertFromGrass(text) {
+            function toTrimmed(text) {
                 let result = '';
                 for (const char of text) {
-                    result += REVERSE_GRASS_MAP[char] || char;
+                    result += TO_TRIMMED_MAP[char] || char;
                 }
                 return result;
             }
@@ -278,14 +290,14 @@
             grassBtn.addEventListener('click', () => {
                 const currentText = mainText.value;
                 if (currentText) {
-                    mainText.value = convertToGrass(currentText);
+                    mainText.value = toGrassed(currentText);
                 }
             });
 
             degrassBtn.addEventListener('click', () => {
                 const currentText = mainText.value;
                 if (currentText) {
-                    mainText.value = convertFromGrass(currentText);
+                    mainText.value = toTrimmed(currentText);
                 }
             });
 
