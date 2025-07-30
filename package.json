@@ -1,0 +1,24 @@
+{
+  "name": "kusa-wwwwww",
+  "version": "1.0.0",
+  "description": "大草原不可避 - 文字轉草字工具",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npm run build && python3 -m http.server 8000 -d dist",
+    "build": "node src/converter.js && cp src/index.html dist/",
+    "deploy": "npm run build && scp -r dist/* root@applepig.idv.tw:/var/www/html/kusa"
+  },
+  "keywords": [
+    "grass",
+    "text-converter",
+    "chinese",
+    "unicode"
+  ],
+  "author": "Dominic Wu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/applpeig/kusa-wwwwww.git"
+  },
+  "homepage": "https://applepig.idv.tw/kusa"
+}
