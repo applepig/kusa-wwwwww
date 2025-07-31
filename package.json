@@ -4,7 +4,7 @@
   "description": "大草原不可避 - 文字轉草字工具",
   "main": "index.html",
   "scripts": {
-    "dev": "npm run build && python3 -m http.server 8000 -d dist",
+    "dev": "npm run build && python3 -m http.server 8000 -d app",
     "dev:clean": "pkill -f 'python3 -m http.server 8000' || true",
     "build": "node build.js"
   },
