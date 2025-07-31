@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>෴ 大草原不可避 ෴</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Favicon 設定 -->
+    <link rel="icon" type="image/x-icon" href="icon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon/android-chrome-512x512.png">
+    <link rel="manifest" href="icon/site.webmanifest">
+
+</head>
+
+<body>
+
+    <div class="app-container">
+        <header>
+            ෴ 大草原不可避 ෴
+        </header>
+
+        <main class="main-content">
+            <textarea id="main-text" placeholder="在這裡輸入文字..."></textarea>
+            <div class="button-bar">
+                <div class="button-group-left">
+                    <button id="grass-btn" class="action-button" title="長草">
+                        <span>෴</span>
+                        <span>長草</span>
+                    </button>
+                    <button id="copy-btn" class="action-button" title="複製">
+                        <span>📋</span>
+                        <span>複製</span>
+                    </button>
+                </div>
+                <span id="copy-feedback" class="copy-feedback">已複製！</span>
+                <div class="button-group-right">
+                    <button id="degrass-btn" class="action-button outline" title="除草">
+                        <span>🪒</span>
+                        <span>除草</span>
+                    </button>
+                    <button id="clear-btn" class="action-button outline" title="清除">
+                        <span>🗑️</span>
+                        <span>清除</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="grass.js"></script>
+    <script src="kusa.js"></script>
+
+
+</body>
+
+</html>

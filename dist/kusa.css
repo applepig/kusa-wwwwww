@@ -1,0 +1,186 @@
+/* --- 全域設定與顏色變數 --- */
+:root {
+    --grass-green-dark: #2d6a4f;
+    --grass-green-main: #40916c;
+    --grass-green-light: #52b788;
+    --grass-green-bg: #f0f4f0;
+    --text-color: #1b4332;
+    --border-color: #d8e9e0;
+    --container-bg: #ffffff;
+    --header-bg: #40916c;
+    --header-text: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+    height: 100dvh;
+    font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    background-color: var(--grass-green-bg);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- 主要 App 容器 --- */
+.app-container {
+    width: 100%;
+    height: 100%;
+    max-width: 1280px;
+    max-height: 720px;
+    background-color: var(--container-bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* 確保子元素的圓角正確顯示 */
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* --- 主要內容區 --- */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #fdfdfd;
+    color: var(--text-color);
+    resize: none;
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--grass-green-main);
+    box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.2);
+}
+
+/* --- 按鈕 --- */
+.button-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 12px;
+}
+
+.button-group-left,
+.button-group-right {
+    display: flex;
+    gap: 8px;
+}
+
+.action-button {
+    background-color: var(--grass-green-main);
+    color: white;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.action-button:hover {
+    background-color: var(--grass-green-dark);
+    transform: translateY(-1px);
+}
+
+.action-button:active {
+    transform: translateY(0);
+}
+
+.action-button.outline {
+    background-color: transparent;
+    border: 1px solid var(--grass-green-main);
+    color: var(--grass-green-main);
+}
+
+.action-button.outline:hover {
+    background-color: var(--grass-green-main);
+    color: white;
+}
+
+.copy-feedback {
+    font-size: 0.9rem;
+    color: var(--grass-green-main);
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+/* --- 手機版響應式設計 (寬度 <= 768px) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    .app-container {
+        max-height: none;
+        height: 100vh;
+        height: 100dvh;
+        /* 使用 dynamic viewport height */
+        border-radius: 0;
+    }
+
+    header {
+        padding-top: 16px;
+        /* 給狀態列留點空間 */
+        font-size: 1.4rem;
+    }
+
+    .main-content {
+        padding: 12px;
+        gap: 12px;
+        flex: 1;
+    }
+
+    .action-button {
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+
+    .button-group-left,
+    .button-group-right {
+        gap: 6px;
+    }
+}
