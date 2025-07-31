@@ -296,11 +296,24 @@
             }
 
             // --- 事件監聽 ---
+            function updateUrl(mode, text) {
+                const params = new URLSearchParams();
+                if (mode) {
+                    params.set('mode', mode);
+                }
+                if (text) {
+                    params.set('q', text);
+                }
+                const newUrl = window.location.pathname + (params.toString() ? `?${params.toString()}` : '');
+                history.replaceState(null, '', newUrl);
+            }
+
             grassBtn.addEventListener('click', () => {
                 const currentText = mainText.value;
                 if (currentText) {
                     mainText.value = toGrassed(currentText);
                 }
+                updateUrl('grassed', mainText.value);
             });
 
             degrassBtn.addEventListener('click', () => {
@@ -308,11 +321,13 @@
                 if (currentText) {
                     mainText.value = toTrimmed(currentText);
                 }
+                updateUrl('trimmed', mainText.value);
             });
 
             clearBtn.addEventListener('click', () => {
                 mainText.value = '';
                 mainText.focus();
+                updateUrl();
             });
 
             copyBtn.addEventListener('click', () => {
@@ -331,6 +346,19 @@
             });
 
             // --- 初始載入 ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlText = urlParams.get('q');
+            const urlMode = urlParams.get('mode');
+
+            if (urlText) {
+                mainText.value = urlText;
+                if (urlMode === 'grassed') {
+                    mainText.value = toGrassed(mainText.value);
+                } else if (urlMode === 'trimmed') {
+                    mainText.value = toTrimmed(mainText.value);
+                }
+            }
+
             mainText.focus();
         });
 

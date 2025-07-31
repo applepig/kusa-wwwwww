@@ -30,6 +30,18 @@ https://applepig.idv.tw/kusa
 - 支援 2412 個字元
 - 完全免費，完全有趣！
 
+## 🔗 API 連結用法
+
+網址可以帶上 `mode` 與 `q` 兩個參數直接操作轉換結果：
+
+```
+https://applepig.idv.tw/kusa?mode=grassed&q=青鄉
+```
+
+其中 `mode` 可以是 `grassed` 或 `trimmed`，`q` 則是要處理的文字。
+點擊頁面上的「長草」或「除草」按鈕後，網址會同步更新。
+按下「清除」時，網址上的參數也會被移除。
+
 ---
 
 *「人生苦短，對草當割」* 🌿
