@@ -34,4 +34,4 @@ jobs:
 
       - name: Copy files
         run: |
-          scp -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/kusa/
+          scp -r app/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/kusa/
