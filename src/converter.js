@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 // 定義檔案路徑
-const outputDir = path.join(__dirname, '..', 'dist');
+const outputDir = path.join(__dirname, '..', 'app');
 const inputFilePath = path.join(__dirname, 'raw_data.txt');
 const outputFilePath = path.join(outputDir, 'grass.js');
 
-// 確保 dist 資料夾存在
+// 確保 app 資料夾存在
 fs.mkdirSync(outputDir, { recursive: true });
 
 // 使用正規表示式來匹配 "⿱艹" 後面跟著一個字的結構，允許後面有標記如[JK]
@@ -58,8 +58,8 @@ try {    const fileContent = fs.readFileSync(inputFilePath, 'utf-8');    const l
         js_content += `GRASSED[${chunk_index}] = "${grass_chunk}";\n\n`;
     }
 
-    js_content += "const TRIMMED_CHARS = TRIMMED.join('');\n";
-    js_content += "const GRASSED_CHARS = GRASSED.join('');\n";
+    js_content += "export const TRIMMED_CHARS = TRIMMED.join('');\n";
+    js_content += "export const GRASSED_CHARS = GRASSED.join('');\n";
 
     fs.writeFileSync(outputFilePath, js_content, 'utf-8');
 
