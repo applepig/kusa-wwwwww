@@ -278,6 +278,32 @@
             const copyBtn = document.getElementById('copy-btn');
             const copyFeedback = document.getElementById('copy-feedback');
 
+            const headerTitle = document.querySelector('.app-container > header');
+            const grassBtnLabel = grassBtn.querySelectorAll('span')[1];
+            const copyBtnLabel = copyBtn.querySelectorAll('span')[1];
+            const degrassBtnLabel = degrassBtn.querySelectorAll('span')[1];
+            const clearBtnLabel = clearBtn.querySelectorAll('span')[1];
+
+            const ORIGINAL_TEXTS = {
+                header: headerTitle.textContent,
+                grass: grassBtnLabel.textContent,
+                copy: copyBtnLabel.textContent,
+                degrass: degrassBtnLabel.textContent,
+                clear: clearBtnLabel.textContent,
+            };
+
+            let TRIMMED_TEXTS = {};
+            let GRASSED_TEXTS = {};
+
+            function applyUiTexts(texts) {
+                const t = texts || TRIMMED_TEXTS;
+                headerTitle.textContent = t.header;
+                grassBtnLabel.textContent = t.grass;
+                copyBtnLabel.textContent = t.copy;
+                degrassBtnLabel.textContent = t.degrass;
+                clearBtnLabel.textContent = t.clear;
+            }
+
             // --- 核心轉換功能 ---
             function toGrassed(text) {
                 let result = '';
@@ -294,6 +320,22 @@
                 }
                 return result;
             }
+
+            TRIMMED_TEXTS = {
+                header: toTrimmed(ORIGINAL_TEXTS.header),
+                grass: toTrimmed(ORIGINAL_TEXTS.grass),
+                copy: toTrimmed(ORIGINAL_TEXTS.copy),
+                degrass: toTrimmed(ORIGINAL_TEXTS.degrass),
+                clear: toTrimmed(ORIGINAL_TEXTS.clear),
+            };
+
+            GRASSED_TEXTS = {
+                header: toGrassed(ORIGINAL_TEXTS.header),
+                grass: toGrassed(ORIGINAL_TEXTS.grass),
+                copy: toGrassed(ORIGINAL_TEXTS.copy),
+                degrass: toGrassed(ORIGINAL_TEXTS.degrass),
+                clear: toGrassed(ORIGINAL_TEXTS.clear),
+            };
 
             // --- 事件監聽 ---
             function updateUrl(mode, text) {
@@ -313,6 +355,7 @@
                 if (currentText) {
                     mainText.value = toGrassed(currentText);
                 }
+                applyUiTexts(GRASSED_TEXTS);
                 updateUrl('grassed', mainText.value);
             });
 
@@ -321,12 +364,14 @@
                 if (currentText) {
                     mainText.value = toTrimmed(currentText);
                 }
+                applyUiTexts(TRIMMED_TEXTS);
                 updateUrl('trimmed', mainText.value);
             });
 
             clearBtn.addEventListener('click', () => {
                 mainText.value = '';
                 mainText.focus();
+                applyUiTexts(ORIGINAL_TEXTS);
                 updateUrl();
             });
 
@@ -357,6 +402,14 @@
                 } else if (urlMode === 'trimmed') {
                     mainText.value = toTrimmed(mainText.value);
                 }
+            }
+
+            if (urlMode === 'grassed') {
+                applyUiTexts(GRASSED_TEXTS);
+            } else if (urlMode === 'trimmed') {
+                applyUiTexts(TRIMMED_TEXTS);
+            } else {
+                applyUiTexts(ORIGINAL_TEXTS);
             }
 
             mainText.focus();
