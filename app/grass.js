@@ -148,5 +148,5 @@ GRASSED[47] = "𮑃𮑄𮑇𮑉𮑌𮑍𮑎𮑏𮑒𮑔𮑕𮑖𮑗𮑘𮑙𮑞�
 TRIMMED[48] = "縳擘爀辭糪覽已㡳縷⑦⑤⑧";
 GRASSED[48] = "𮓁𮓂𮓊𮓑𮓒𮓔芑菧𧃒華𦭅𦱦";
 
-const TRIMMED_CHARS = TRIMMED.join('');
-const GRASSED_CHARS = GRASSED.join('');
+export const TRIMMED_CHARS = TRIMMED.join('');
+export const GRASSED_CHARS = GRASSED.join('');
