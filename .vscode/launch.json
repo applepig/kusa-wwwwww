@@ -2,12 +2,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
+            "name": "Launch Server + Chrome",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:8000",
             "webRoot": "${workspaceFolder}/dist",
-            "sourceMaps": false
+            "sourceMaps": false,
+            "preLaunchTask": "Start Dev Server",
+            "postDebugTask": "Stop Dev Server"
         }
     ]
 }

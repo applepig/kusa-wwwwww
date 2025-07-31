@@ -13,7 +13,7 @@ const srcHtmlPath = path.join(__dirname, 'src', 'index.html');
 const destHtmlPath = path.join(__dirname, 'dist', 'index.html');
 
 console.log('複製 HTML 檔案...');
-fs.copyFileSync(srcHtmlPath, destHtmlPath);
+fs.symlinkSync(srcHtmlPath, destHtmlPath);
 console.log('HTML 檔案複製完成。');
 
 console.log('建置成功！');
