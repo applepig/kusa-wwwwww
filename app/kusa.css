@@ -155,10 +155,9 @@ textarea:focus {
     }
 
     .app-container {
-        max-height: none;
-        height: 100vh;
-        height: 100dvh;
-        /* 使用 dynamic viewport height */
+        max-height: min(60vh, 400px);
+        height: auto;
+        /* 避免填滿整個螢幕，較小的行動裝置也能留白 */
         border-radius: 0;
     }
 
