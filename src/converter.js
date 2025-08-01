@@ -47,12 +47,17 @@ try {    const fileContent = fs.readFileSync(inputFilePath, 'utf-8');    const l
     });
 
     const chunkSize = 50;
+    const latinTrimmed = 'ACDEGHIJKLNORSTUVWYZacdeghijklnorstuvwyz';
+    const latinGrassed = 'ǍČĎĚǦȞǏĴǨĽŇǑŘŠŤǓṼŴŶŽǎčďěǧȟǐǰǩľňǒřšťǔṽŵŷž';
+
     let js_content = 'const TRIMMED = [];\nconst GRASSED = [];\n\n';
+    js_content += `TRIMMED[0] = "${latinTrimmed}";\n`;
+    js_content += `GRASSED[0] = "${latinGrassed}";\n\n`;
 
     for (let i = 0; i < original_chars.length; i += chunkSize) {
         const original_chunk = original_chars.slice(i, i + chunkSize).join('');
         const grass_chunk = grass_chars.slice(i, i + chunkSize).join('');
-        const chunk_index = Math.floor(i / chunkSize);
+        const chunk_index = Math.floor(i / chunkSize) + 1;
 
         js_content += `TRIMMED[${chunk_index}] = "${original_chunk}";\n`;
         js_content += `GRASSED[${chunk_index}] = "${grass_chunk}";\n\n`;

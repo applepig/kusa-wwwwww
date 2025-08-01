@@ -42,6 +42,11 @@ https://applepig.idv.tw/kusa?mode=grassed&q=青鄉
 點擊頁面上的「長草」或「除草」按鈕後，網址會同步更新。
 按下「清除」時，網址上的參數也會被移除。
 
+## 📚 延伸研究：英文字母草體化
+
+有社群朋友好奇英文字母是否也能「長草」。目前尚未在程式中實作，
+但已先整理可能對應的拉丁字母變體，詳見 [`docs/latin_grass_variants.md`](docs/latin_grass_variants.md)。
+
 ---
 
 *「人生苦短，對草當割」* 🌿
