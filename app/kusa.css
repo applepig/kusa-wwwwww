@@ -9,6 +9,7 @@
     --container-bg: #ffffff;
     --header-bg: #40916c;
     --header-text: #ffffff;
+    --app-vh: 100dvh;
 }
 
 * {
@@ -22,8 +23,7 @@ html {
 }
 
 body {
-    height: 100vh;
-    height: 100dvh;
+    height: var(--app-vh);
     font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     background-color: var(--grass-green-bg);
     color: var(--text-color);
@@ -31,6 +31,12 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+body.keyboard-open {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0;
 }
 
 /* --- 主要 App 容器 --- */
@@ -181,5 +187,10 @@ textarea:focus {
     .button-group-left,
     .button-group-right {
         gap: 6px;
+    }
+
+    body.keyboard-open .app-container {
+        max-height: none;
+        height: 100%;
     }
 }
