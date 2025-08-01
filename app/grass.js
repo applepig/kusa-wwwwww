@@ -148,5 +148,26 @@ GRASSED[47] = "𮑃𮑄𮑇𮑉𮑌𮑍𮑎𮑏𮑒𮑔𮑕𮑖𮑗𮑘𮑙𮑞�
 TRIMMED[48] = "縳擘爀辭糪覽已㡳縷⑦⑤⑧";
 GRASSED[48] = "𮓁𮓂𮓊𮓑𮓒𮓔芑菧𧃒華𦭅𦱦";
 
+TRIMMED[49] = "AAAAAAAAAABBBBCCCCCCDDDDDDDEEEEEEEEEEFFGGGGGGHHHHH";
+GRASSED[49] = "ǍĂÂÃÄÀÁĀĄÆƁƂƄɃČĊĈÇĆƇĎḊḌḎḐḒƊĚĔÊËÈÉĒĘƎƐƑḞǦĠĜĞĢƓȞĤĦḢḤ";
+
+TRIMMED[50] = "HHHIIIIIIIIIJJKKKKKLLLLLLLLLMMMNNNNNNNOOOOOOOOOOPP";
+GRASSED[50] = "ḦḨḪǏĬÎÏÌÍĪĮƗĴɈǨḰḲḴƘĽĹĻĿŁḶḸḺḼḾṀṂŇŃŅṄṆṈṊǑŎÔÖÒÓŌÕØŒṔṖ";
+
+TRIMMED[51] = "PQRRRRRRRSSSSSSSSSTTTTTUUUUUUUUUUUUUUVVWWWWWWWXXYY";
+GRASSED[51] = "ƤɊŘŔŖṘṚṜṞŠŚŜŞṠṢṤṦṨŤŢṬṮṰǓŬÛÜÙÚŪŲŮŰǗǛǙǕṼṾŴẀẂŴẄẆẈẊẌŶÝ";
+
+TRIMMED[52] = "YYYYYYYZZZZZZaaaaaaaaaabbbbccccccdddddddeeeeeeeeee";
+GRASSED[52] = "ŸȲẎỲỸỶỴŽŹŻẐẒẔǎăâãäàáāąæɓƃƅɓčċĉçćƈďḋḍḏḑḓɗěĕêëèéēęǝɛ";
+
+TRIMMED[53] = "ffgggggghhhhhhhhiiiiiiiiijjkkkkklllllllllmmmnnnnnn";
+GRASSED[53] = "ƒḟǧġĝğģɠȟĥħḣḥḧḩḫǐĭîïìíīįɨĵɉǩḱḳḵƙľĺļŀłḷḹḻḽḿṁṃňńņṅṇṉ";
+
+TRIMMED[54] = "noooooooooopppqrrrrrrrssssssssstttttuuuuuuuuuuuuuu";
+GRASSED[54] = "ṋǒŏôöòóōõøœṕṗƥɋřŕŗṙṛṝṟšśŝşṡṣṥṧṩťţṭṯṱǔŭûüùúūųůűǘǜǚǖ";
+
+TRIMMED[55] = "vvwwwwwwwxxyyyyyyyyyzzzzzz";
+GRASSED[55] = "ṽṿŵẁẃŵẅẇẉẋẍŷýÿȳẏỳỹỷỵžźżẑẓẕ";
+
 export const TRIMMED_CHARS = TRIMMED.join('');
 export const GRASSED_CHARS = GRASSED.join('');
