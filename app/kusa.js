@@ -14,6 +14,7 @@ class KusaApp {
         this.buildMaps();
         this.cacheDom();
         this.bindEvents();
+        this.setupViewportHandling();
         this.loadFromUrl();
         this.render();
     }
@@ -85,6 +86,29 @@ class KusaApp {
                 });
             }
         });
+    }
+
+    setupViewportHandling() {
+        this.updateViewportHeight();
+
+        this.boundViewportHandler = this.updateViewportHeight.bind(this);
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', this.boundViewportHandler);
+            window.visualViewport.addEventListener('scroll', this.boundViewportHandler);
+        } else {
+            window.addEventListener('resize', this.boundViewportHandler);
+        }
+    }
+
+    updateViewportHeight() {
+        const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        document.documentElement.style.setProperty('--app-vh', `${vh}px`);
+
+        const keyboardThreshold = 150;
+        const isKeyboardOpen = window.innerHeight - vh > keyboardThreshold;
+        const isMobile = window.innerWidth <= 768;
+        document.body.classList.toggle('keyboard-open', isMobile && isKeyboardOpen);
     }
 
     loadFromUrl() {
