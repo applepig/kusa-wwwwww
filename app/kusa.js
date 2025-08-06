@@ -104,11 +104,15 @@ class KusaApp {
     updateViewportHeight() {
         const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
         document.documentElement.style.setProperty('--app-vh', `${vh}px`);
+    }
 
-        const keyboardThreshold = 150;
-        const isKeyboardOpen = window.innerHeight - vh > keyboardThreshold;
-        const isMobile = window.innerWidth <= 768;
-        document.body.classList.toggle('keyboard-open', isMobile && isKeyboardOpen);
+    destroy() {
+        if (window.visualViewport) {
+            window.visualViewport.removeEventListener('resize', this.boundViewportHandler);
+            window.visualViewport.removeEventListener('scroll', this.boundViewportHandler);
+        } else {
+            window.removeEventListener('resize', this.boundViewportHandler);
+        }
     }
 
     loadFromUrl() {
@@ -164,5 +168,6 @@ class KusaApp {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    new KusaApp();
+    const app = new KusaApp();
+    window.addEventListener('beforeunload', () => app.destroy());
 });
